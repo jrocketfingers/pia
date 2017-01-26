@@ -1,0 +1,11 @@
+version: '2'
+services:
+  db:
+    image: 'mysql'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'pia'
+      MYSQL_PASSWORD: 'pia'
+      MYSQL_DATABASE: 'pia'
+    ports:
+      - "3306:3306"
