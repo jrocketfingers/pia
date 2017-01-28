@@ -5,12 +5,12 @@ CREATE TABLE IF NOT EXISTS user (
   id                      INTEGER AUTO_INCREMENT,
   first_name              VARCHAR(255),
   last_name               VARCHAR(255),
+  username                VARCHAR(255),
   email                   VARCHAR(255),
   password                BINARY(60),
   phone_number            VARCHAR(255),
   reservations_banned     BOOLEAN,
-  last_login_datetime     DATETIME,
-  is_admin                BOOLEAN,
+  last_login_datetime     DATETIME NULL,
 
   PRIMARY KEY (id)
 );
