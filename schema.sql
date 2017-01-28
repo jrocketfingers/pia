@@ -1,3 +1,6 @@
+CREATE SCHEMA IF NOT EXISTS pia;
+USE pia;
+
 CREATE TABLE IF NOT EXISTS user (
   id                      INTEGER AUTO_INCREMENT,
   first_name              VARCHAR(255),
@@ -7,7 +10,16 @@ CREATE TABLE IF NOT EXISTS user (
   phone_number            VARCHAR(255),
   reservations_banned     BOOLEAN,
   last_login_datetime     DATETIME,
+  is_admin                BOOLEAN,
 
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS admin (
+  id       INTEGER AUTO_INCREMENT,
+  user_fk  INTEGER,
+
+  FOREIGN KEY (user_fk) REFERENCES user(id),
   PRIMARY KEY (id)
 );
 
@@ -156,6 +168,15 @@ CREATE TABLE IF NOT EXISTS festivalmedia (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE IF NOT EXISTS socialnetwork (
+  id          INTEGER AUTO_INCREMENT,
+  name        VARCHAR(255),
+  link        VARCHAR(255),
+  festival_fk INTEGER,
+
+  FOREIGN KEY (festival_fk) REFERENCES festival(id),
+  PRIMARY KEY (id)
+);
 /*
 [extras]
 Login Audit:
